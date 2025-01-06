@@ -30,13 +30,11 @@ class LinkController extends Controller
      */
     public function store(StoreLinkRequest $request)
     {
+        $user = auth()->user();
 
-        Link::query()->create(
-            array_merge(
-                $request->validated(),
-                ['user_id' => auth()->id()]
-            )
-        );
+        $user
+            ->links()
+            ->create($request->validated());
 
         return to_route('dashboard');
     }

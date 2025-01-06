@@ -5,7 +5,7 @@
         @csrf
         
         <div>
-            <input type="name" placeholder="Your Name" name="name" value="{{ old('name') }}">
+            <input type="text" placeholder="Your Name" name="name" value="{{ old('name') }}">
             
             @error('name')
             <span>

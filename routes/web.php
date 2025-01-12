@@ -7,18 +7,15 @@ use App\Http\Controllers\Auth\LoginController;
     use App\Http\Controllers\LinkController;
     use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::middleware('auth')->group(function () {
     Route::get('/logout', LogoutController::class)->name('logout');
-    Route::get('/dashboard', DashboardController::class)->name('dashboard');
+    Route::get('/links', DashboardController::class)->name('dashboard');
 
     Route::get('/links/create', [LinkController::class, 'create'])->name('links.create');
     Route::post('/links/create', [LinkController::class, 'store']);
     Route::get('/links/edit/{link}', [LinkController::class, 'edit'])->name('links.edit');
     Route::put('/links/edit/{link}', [LinkController::class, 'update']);
+    Route::delete('/links/delete/{link}', [LinkController::class, 'destroy'])->name('links.destroy');
 });
 
 Route::middleware('guest')->group(function () {

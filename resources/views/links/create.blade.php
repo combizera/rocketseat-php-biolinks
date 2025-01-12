@@ -26,6 +26,11 @@
     </div>
     <br>
     
-    <button>Create new Link</button>
+    <a href="{{ route('dashboard') }}">
+      Cancel
+    </a>
+    <button>
+      Create new Link
+    </button>
   </form>
 </div>

@@ -42,9 +42,9 @@ class LinkController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Link $link)
+    public function edit(Link $link): View
     {
-        //
+        return view('links.edit', compact('link'));
     }
 
     /**
@@ -52,7 +52,16 @@ class LinkController extends Controller
      */
     public function update(UpdateLinkRequest $request, Link $link)
     {
-        //
+        //$link->link = $request->link;
+        //$link->name = $request->name;
+        //$link->save();
+
+        // Método mais limpo
+        $link->fill($request->validated())
+            ->save();
+
+        return to_route('dashboard')
+            ->with('message', 'Link updated successfully');
     }
 
     /**

@@ -12,11 +12,13 @@ Route::get('/', function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', DashboardController::class)->name('dashboard');
     Route::get('/logout', LogoutController::class)->name('logout');
+    Route::get('/dashboard', DashboardController::class)->name('dashboard');
 
     Route::get('/links/create', [LinkController::class, 'create'])->name('links.create');
     Route::post('/links/create', [LinkController::class, 'store']);
+    Route::get('/links/edit/{link}', [LinkController::class, 'edit'])->name('links.edit');
+    Route::put('/links/edit/{link}', [LinkController::class, 'update']);
 });
 
 Route::middleware('guest')->group(function () {

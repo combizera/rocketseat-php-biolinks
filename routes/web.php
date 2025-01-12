@@ -16,6 +16,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/links/edit/{link}', [LinkController::class, 'edit'])->name('links.edit');
     Route::put('/links/edit/{link}', [LinkController::class, 'update']);
     Route::delete('/links/delete/{link}', [LinkController::class, 'destroy'])->name('links.destroy');
+
+    Route::patch('/links/up/{link}', [LinkController::class, 'up'])->name('links.up');
+    Route::patch('/links/down/{link}', [LinkController::class, 'down'])->name('links.down');
 });
 
 Route::middleware('guest')->group(function () {

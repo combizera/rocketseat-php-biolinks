@@ -17,6 +17,7 @@ return new class extends Migration
                 ->foreignId('user_id')
                 ->constrained()
                 ->onDelete('cascade');
+            $table->unsignedTinyInteger('sort')->default(0);
             $table->string('link');
             $table->string('name');
             $table->timestamps();

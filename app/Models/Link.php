@@ -12,6 +12,7 @@ class Link extends Model
     use HasFactory;
 
     protected $fillable = [
+        'sort',
         'link',
         'name',
     ];

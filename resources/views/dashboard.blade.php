@@ -8,7 +8,24 @@
 
 <ul>
   @foreach($links as $link)
-    <li>
+    <li style="display: flex;">
+    
+      @unless($loop->last)
+        <form action="{{ route('links.down', $link) }}" method="POST">
+          @csrf
+          @method('PATCH')
+          <button type="submit">⬇️</button>
+        </form>
+      @endunless
+     
+      @unless($loop->first)
+        <form action="{{ route('links.up', $link) }}" method="POST">
+          @csrf
+          @method('PATCH')
+          <button type="submit">⬆️</button>
+        </form>
+      @endunless
+      
       <a href="{{ route('links.edit', $link) }}">{{ $link->name }}</a>
       
       <form action="{{ route('links.destroy', $link) }}" method="POST" onsubmit="return confirm('Have shure?')">
